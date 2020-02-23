@@ -1,9 +1,25 @@
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
-}).addTo(mymap);
+var osat = [];
+
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
+
+for (osa of helosaalueet.features) {
+  osat.push({id:osa.properties.id, nimi_fi:osa.properties.nimi_fi, nimi_se:osa.properties.nimi_se});
+}
+shuffle(osat);
