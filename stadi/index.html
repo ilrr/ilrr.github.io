@@ -24,19 +24,46 @@
     </div>
 
     <script type="text/javascript">
-      var myStyle = {
-        "color": "#ff7800",
-        "weight": 5,
-        "opacity": 0.65
+      var vaara = {
+        "color": "#ff0000",
+        "fillOpacity": 0.4,
+        "opacity": 1
       };
+      var oikea = {
+        "color": "#00ff00",
+        "fillOpacity": 0.4,
+        "opacity": 1
+      };
+      var neutraali = {
+        "color": "#0000ff",
+        "fillOpacity": 0,
+        "opacity": 1
+      }
+      var vaarin = [];
       var hesa = L.map('mapid').setView([60.155577, 24.951100], 10);
       L.tileLayer('https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png').addTo(hesa);
-      var osatt = L.geoJson(helosaalueet).addTo(hesa);
+      var osatt = L.geoJson(helosaalueet, {
+        style: neutraali
+      }).addTo(hesa);
       osatt.eachLayer(function (layer) {
                 layer.on('click', function(ev) {
                   if (layer.feature.properties.id == osa.id) {
                     osa = osat.pop();
                     document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
+                    layer.bringToFront()
+                    layer.setStyle(oikea);
+                    osatt.eachLayer(function (ll) {
+                      if (vaarin.find(e => e === ll.feature.properties.id)){
+                        ll.setStyle(neutraali);
+                      }
+                    })
+                    vaarin = [];
+                    this.redraw();
+                  }
+                  else if (osat.find(e => e.id === layer.feature.properties.id)) {
+                    layer.setStyle(vaara);
+                    layer.bringToFront()
+                    vaarin.push(layer.feature.properties.id);
                   }
 
                 ;});
