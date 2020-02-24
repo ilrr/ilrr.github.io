@@ -1,5 +1,15 @@
 #mapid { height: 700px; }
 
+@font-face {
+  font-family: tie;
+  src: url(tie2.otf);
+}
+
+@font-face {
+  font-family: tie;
+  unicode-range: U+2010-U+2010;
+}
+
 .split {
     height: 100%;
     position: fixed;
@@ -10,11 +20,24 @@
 }
 
 .left {
-    width: 70%;
+    width: 80%;
     left: 0;
 }
 
 .right {
-    width: 30%;
+    width: 20%;
     right: 0;
+}
+
+.arvattava {
+  text-align: left;
+  font-family: tie, sans-serif;
+  background-color: white;
+  color: black;
+  margin: 15px 15px 15px 15px;
+
+}
+
+.options {
+  margin: 20% 10px 10px 10px;
 }

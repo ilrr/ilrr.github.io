@@ -10,7 +10,11 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
-    <script type="text/javascript" src="helosaalueet.geojson"></script>
+    <script type="text/javascript" src="data/kaupunginosa.geojson"></script>
+    <script type="text/javascript" src="data/osa-alue.geojson"></script>
+    <script type="text/javascript" src="data/peruspiiri.geojson"></script>
+    <script type="text/javascript" src="data/postinumero.geojson"></script>
+    <script type="text/javascript" src="data/suurpiiri.geojson"></script>
     <script type="text/javascript" src="js/kartta.js"></script>
   </head>
   <body>
@@ -18,60 +22,48 @@
       <div id="mapid"></div>
     </div>
     <div class="split right">
-      <div id="arvattava"></div>
+      <div id="voitit"></div>
+      <div class="arvattava", id="arvattava"></div>
+      <div id="oikeat"></div>
       <div id="vaarat"></div>
+
+      <div class="options">
+        <h3>Valitse pelimuoto</h3>
+        <button onclick="alustaPeli(kaupunginosat)">kaupunginosat</button>
+        <button onclick="alustaPeli(osaalueet)">osa-alueet</button>
+        <button onclick="alustaPeli(suurpiirit)">suurpiirit</button>
+        <button onclick="alustaPeli(peruspiirit)">peruspiirit</button>
+        <!-- <h4>Postinumerot</h4>
+        <button onclick="alustaPeli(postinumerot)">postinumerot</button> -->
+      </div>
     </div>
 
     <script type="text/javascript">
       var vaara = {
         "color": "#ff0000",
         "fillOpacity": 0.4,
-        "opacity": 1
+        "opacity": 1,
+        "weight": 1
       };
       var oikea = {
         "color": "#00ff00",
         "fillOpacity": 0.4,
-        "opacity": 1
+        "opacity": 1,
+        "weight": 1
       };
       var neutraali = {
         "color": "#0000ff",
         "fillOpacity": 0,
-        "opacity": 1
+        "opacity": 1,
+        "weight": 4
       }
       var vaarin = [];
       var vaarat = 0;
+      var oikeat = 0;
       var hesa = L.map('mapid').setView([60.155577, 24.951100], 10);
       L.tileLayer('https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png').addTo(hesa);
-      var osatt = L.geoJson(helosaalueet, {
-        style: neutraali
-      }).addTo(hesa);
-      osatt.eachLayer(function (layer) {
-                layer.on('click', function(ev) {
-                  if (layer.feature.properties.id == osa.id) {
-                    osa = osat.pop();
-                    document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
-                    layer.bringToFront()
-                    layer.setStyle(oikea);
-                    osatt.eachLayer(function (ll) {
-                      if (vaarin.find(e => e === ll.feature.properties.id)){
-                        ll.setStyle(neutraali);
-                      }
-                    })
-                    vaarin = [];
-                    this.redraw();
-                  }
-                  else if (osat.find(e => e.id === layer.feature.properties.id)) {
-                    layer.setStyle(vaara);
-                    layer.bringToFront()
-                    vaarin.push(layer.feature.properties.id);
-                    vaarat += 1;
-                    document.getElementById('vaarat').innerHTML = 'Vääriä arvauksia:' + vaarat;
-                  }
 
-                ;});
-            });
-      var osa = osat.pop();
-      document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
+
     </script>
 
   </body>
