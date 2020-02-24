@@ -47,14 +47,20 @@ function alustaPeli(helosaalueet) {
   osatt.eachLayer(function (layer) {
             layer.on('click', function(ev) {
               if (layer.feature.properties.id == osa.id) {
+                layer.bindTooltip(osa.nimi_fi+"<br>"+osa.nimi_se,{permanent: false, direction:"center", opacity:0.5}).openTooltip();
                 oikeat += 1;
-                document.getElementById('oikeat').innerHTML = 'Olet tiennyt ' + oikeat + ' kaupunginosaa!';
+                if (oikeat == 1){
+                  document.getElementById('oikeat').innerHTML = 'Olet tiennyt yhden kaupunginosan!';
+                } else{
+                  document.getElementById('oikeat').innerHTML = 'Olet tiennyt ' + oikeat + ' kaupunginosaa!';
+                }
                 if (osa = osat.pop()){
                   document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
                 } else {
                   document.getElementById('voitit').innerHTML = 'Voitit pelin!';
                 }
                 layer.bringToFront()
+
                 layer.setStyle(oikea);
                 osatt.eachLayer(function (ll) {
                   if (vaarin.find(e => e === ll.feature.properties.id)){
