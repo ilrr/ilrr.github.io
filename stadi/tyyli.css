@@ -20,6 +20,7 @@
 }
 
 .left {
+  padding-top: 0;
     width: 80%;
     left: 0;
 }
@@ -40,4 +41,14 @@
 
 .options {
   margin: 20% 10px 10px 10px;
+}
+
+.oikeat {
+  margin-left: 10px;
+  color: darkgreen;
+}
+
+.vaarat {
+  margin-left: 10px;
+  color: darkred;
 }

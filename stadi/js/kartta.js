@@ -57,7 +57,7 @@ function alustaPeli(helosaalueet) {
                 if (osa = osat.pop()){
                   document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
                 } else {
-                  document.getElementById('voitit').innerHTML = 'Voitit pelin!';
+                  document.getElementById('arvattava').innerHTML = 'Voitit pelin!';
                 }
                 layer.bringToFront()
 
