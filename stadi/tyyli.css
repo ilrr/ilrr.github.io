@@ -33,14 +33,16 @@
 .arvattava {
   text-align: left;
   font-family: tie, sans-serif;
+  font-size: 1.5vw;
   background-color: white;
   color: black;
   margin: 15px 15px 15px 15px;
+  word-spacing: -.3ch;
 
 }
 
 .options {
-  margin: 20% 10px 10px 10px;
+  margin: 20% 10px 20px 10px;
 }
 
 .oikeat {
@@ -55,4 +57,10 @@
 
 .center {
   text-align: center;
+}
+
+h3 {
+  font-family: sans-serif;
+  font-size: 1.5vw;
+  margin-bottom: 0;
 }
