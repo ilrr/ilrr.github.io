@@ -33,7 +33,7 @@ function nollaa() {
   }
 }
 
-function alustaPeli(helosaalueet) {
+function alustaPeli(helosaalueet, gen, part) {
   nollaa();
   fresh = false;
   osat = [];
@@ -50,9 +50,9 @@ function alustaPeli(helosaalueet) {
                 layer.bindTooltip(osa.nimi_fi+"<br>"+osa.nimi_se,{permanent: false, direction:"center", opacity:0.5}).openTooltip();
                 oikeat += 1;
                 if (oikeat == 1){
-                  document.getElementById('oikeat').innerHTML = 'Olet tiennyt yhden kaupunginosan!';
+                  document.getElementById('oikeat').innerHTML = 'Olet tiennyt yhden '+ gen +'!';
                 } else{
-                  document.getElementById('oikeat').innerHTML = 'Olet tiennyt ' + oikeat + ' kaupunginosaa!';
+                  document.getElementById('oikeat').innerHTML = 'Olet tiennyt ' + oikeat + ' ' + part + '!';
                 }
                 if (osa = osat.pop()){
                   document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
