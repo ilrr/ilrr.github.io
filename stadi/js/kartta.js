@@ -33,6 +33,25 @@ function nollaa() {
   }
 }
 
+var vaara = {
+  "color": "#ff0000",
+  "fillOpacity": 0.4,
+  "opacity": 0.5,
+  "weight": 3
+};
+var oikea = {
+  "color": "#00bb00",
+  "fillOpacity": 0.4,
+  "opacity": 0.5,
+  "weight": 3
+};
+var neutraali = {
+  "color": "#0000ff",
+  "fillOpacity": 0,
+  "opacity": 0.7,
+  "weight": 3
+}
+
 function alustaPeli(helosaalueet, gen, part) {
   nollaa();
   fresh = false;
