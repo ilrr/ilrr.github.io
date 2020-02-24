@@ -70,7 +70,7 @@ function alustaPeli(helosaalueet) {
                 vaarin = [];
                 this.redraw();
               }
-              else if (osat.find(e => e.id === layer.feature.properties.id)) {
+              else if (osat.find(e => e.id === layer.feature.properties.id) && !vaarin.includes(layer.feature.properties.id)) {
                 layer.setStyle(vaara);
                 layer.bringToFront()
                 vaarin.push(layer.feature.properties.id);
