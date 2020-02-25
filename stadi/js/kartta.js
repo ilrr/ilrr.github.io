@@ -25,7 +25,6 @@ function shuffle(array) {
 function nollaa() {
   oikeat = 0;
   vaarat = 0;
-  document.getElementById('voitit').innerHTML = '';
   document.getElementById('oikeat').innerHTML = '';
   document.getElementById('arvattava').innerHTML = '';
   document.getElementById('vaarat').innerHTML = '';
@@ -65,6 +64,7 @@ var neutraali = {
 
 function alustaPeli(helosaalueet, gen, part) {
   nollaa();
+  document.getElementById('skippinappi').innerHTML = '<button class="nappi" onclick="skip()">ohita</button>';
   fresh = false;
   osat = [];
   for (osa of helosaalueet.features) {
