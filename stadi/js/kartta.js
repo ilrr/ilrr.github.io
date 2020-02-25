@@ -2,6 +2,7 @@ var osat = [];
 var fresh = true;
 var osatt;
 var posti = false;
+var osa;
 
 function shuffle(array) {
   var m = array.length, t, i;
@@ -32,6 +33,16 @@ function nollaa() {
     hesa.removeLayer(osatt);
   }
 }
+
+function nollaaVaarat() {
+  osatt.eachLayer(function (ll) {
+    if (vaarin.find(e => e === ll.feature.properties.id)){
+      ll.setStyle(neutraali);
+    }
+  })
+  vaarin = [];
+}
+
 
 var vaara = {
   "color": "#ff0000",
@@ -81,12 +92,7 @@ function alustaPeli(helosaalueet, gen, part) {
                 layer.bringToFront()
 
                 layer.setStyle(oikea);
-                osatt.eachLayer(function (ll) {
-                  if (vaarin.find(e => e === ll.feature.properties.id)){
-                    ll.setStyle(neutraali);
-                  }
-                })
-                vaarin = [];
+                nollaaVaarat();
                 this.redraw();
               }
               else if (osat.find(e => e.id === layer.feature.properties.id) && !vaarin.includes(layer.feature.properties.id)) {
@@ -98,11 +104,19 @@ function alustaPeli(helosaalueet, gen, part) {
               }
 
             ;});
+
         });
-  var osa = osat.pop();
+  osa = osat.pop();
 //  if (posti) {
 //    document.getElementById('arvattava').innerHTML = osa.tunnus;
 //  } else {
     document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
 //  }
+}
+
+function skip() {
+  nollaaVaarat();
+  osat.unshift(osa);
+  osa = osat.pop();
+  document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
 }

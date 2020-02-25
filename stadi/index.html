@@ -2,6 +2,7 @@
 <html lang="fi" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helsingin kaupunginosapeli</title>
     <link rel="stylesheet" href="tyyli.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -18,28 +19,39 @@
     <script type="text/javascript" src="js/kartta.js"></script>
   </head>
   <body>
-    <div class="split left">
-      <div id="mapid"></div>
-    </div>
-    <div class="split right">
-      <div id="voitit"></div>
-      <div class="arvattava", id="arvattava"></div>
-      <div class="oikeat", id="oikeat"></div>
-      <div class="vaarat", id="vaarat"></div>
 
-      <div class="options">
-        <h3>Valitse aluejako ja aloita uusi peli</h3>
-        <button onclick="alustaPeli(kaupunginosat, 'kaupunginosan', 'kaupunginosaa')">kaupunginosat</button>
-        <button onclick="alustaPeli(osaalueet, 'osa-alueen', 'osa-aluetta')">osa-alueet</button>
-        <button onclick="alustaPeli(suurpiirit, 'suurpiirin', 'suurpiiriä')">suurpiirit</button>
-        <button onclick="alustaPeli(peruspiirit, 'peruspiirin', 'peruspiiriä')">peruspiirit</button>
-        <!-- <h4>Postinumerot</h4>
-        <button onclick="alustaPeli(postinumerot)">postinumerot</button> -->
+    <div class="oikea">
+      <div id="voitit"></div>
+      <div class="boxi1">
+        <div class="arvattava", id="arvattava"></div>
+        <div align="center">
+          <button onclick="skip()">ohita</button>
+        </div>
       </div>
+      <div class="boxi2">
+
+        <div class="oikeat", id="oikeat"></div>
+        <div class="vaarat", id="vaarat"></div>
+      </div>
+      <!--div class="boxi1"-->
+        <div class="options">
+          <h3>Valitse aluejako ja aloita uusi peli</h3>
+          <button onclick="alustaPeli(kaupunginosat, 'kaupunginosan', 'kaupunginosaa')">kaupunginosat</button>
+          <button onclick="alustaPeli(osaalueet, 'osa-alueen', 'osa-aluetta')">osa-alueet</button>
+          <button onclick="alustaPeli(suurpiirit, 'suurpiirin', 'suurpiiriä')">suurpiirit</button>
+          <button onclick="alustaPeli(peruspiirit, 'peruspiirin', 'peruspiiriä')">peruspiirit</button>
+          <!-- <h4>Postinumerot</h4>
+          <button onclick="alustaPeli(postinumerot)">postinumerot</button> -->
+        </div>
+      <!--/div-->
+    </div>
+
+    <div class="vasen">
+      <div id="mapid"></div>
     </div>
 
     <script type="text/javascript">
-      
+
       var vaarin = [];
       var vaarat = 0;
       var oikeat = 0;
