@@ -48,20 +48,19 @@
 }
 
 .vasen {
-  width: 80%;
+  width: 71%;
   left: 0;
   float: left;
 }
 
 .oikea {
-    width: 20%;
+    width: 29%;
     right: 0;
     float: right;
 }
 
 .arvattava {
   text-align: left;
-  height: 8vw;
   font-family: tie, sans-serif;
   font-size: 1.5vw;
   background-color: white;
