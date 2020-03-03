@@ -16,6 +16,7 @@
   border:0;
 }
 
+
 .skippinappi {
   margin-left: 10px;
   margin-bottom: 15px;
@@ -33,10 +34,15 @@
   font-size: 14px;
 }
 
+.nappi2 {
+  background-color: #00D7A7;
+}
+
 .nappi:hover {
   background-color: #0072C6;
   color: white;
 }
+
 
 .split {
     height: 100%;
@@ -99,6 +105,7 @@ h3 {
   .vasen {
     float: right;
     width: 100%;
+    margin-top: 10px;
   }
 
   .oikea {
@@ -129,6 +136,28 @@ h3 {
   }
   h3 {
     margin-top: 0px;
+    font-size: 2.5vw;
   }
-  #mapid { height: 600px; }
+  #mapid { height: 500px; }
+  .nappi {
+    margin: 1px 1px;
+    padding: 2px 6px;
+    font-size: 3.5vw;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+    #mapid { height: 450px; }
+}
+
+@media only screen and (max-height: 550px) {
+    #mapid { height: 400px; }
+}
+
+@media only screen and (max-height: 500px) {
+    #mapid { height: 350px; }
+}
+
+@media only screen and (max-height: 450px) {
+    #mapid { height: 300px; }
 }

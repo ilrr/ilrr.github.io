@@ -4,6 +4,23 @@ var osatt;
 var posti = false;
 var osa;
 
+var tileI = 0;
+var tiles = [
+  L.tileLayer('https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png', {attribution: 'Taustakartta &copy; <a href="https://www.openstreetmap.org/">OpenStreetMapin</a> tekijät | Aluerajat &copy; Helsingin kaupunki'}),
+  L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Aluerajat &copy; Helsingin kaupunki'}),
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community | Aluerajat &copy; Helsingin kaupunki'}),
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+	attribution: 'Taustakartta &copy; <a href="https://www.openstreetmap.org/">OpenStreetMapin</a> tekijät &copy; <a href="https://carto.com/attributions">CARTO</a> | Aluerajat &copy; Helsingin kaupunki'})
+]
+
+var hesa;
+
+function vaihdaTausta() {
+  hesa.removeLayer(tiles[tileI]);
+  tileI = (tileI + 1) % tiles.length;
+  hesa.addLayer(tiles[tileI]);
+}
+
 function shuffle(array) {
   var m = array.length, t, i;
 
