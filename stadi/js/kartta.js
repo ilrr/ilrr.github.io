@@ -4,6 +4,8 @@ var osatt;
 var posti = false;
 var osa;
 
+var pks = {"features": espoo.features.concat(kaupunginosat.features).concat(grani.features).concat(vantaa.features)};
+
 var tileI = 0;
 var tiles = [
   L.tileLayer('https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png', {attribution: 'Taustakartta &copy; <a href="https://www.openstreetmap.org/">OpenStreetMapin</a> tekijät | Aluerajat &copy; Helsingin kaupunki'}),
