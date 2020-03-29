@@ -150,4 +150,4 @@ h3 {
 }
 
 @media only screen and (max-width: 500px) {
-    #mapid { height: calc(100vh - 120px); }
+    #mapid { height: calc(100vh - 110px); }
