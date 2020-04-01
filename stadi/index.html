@@ -32,6 +32,22 @@
     <script type="text/javascript" src="js/kartta.js"></script>
   </head>
   <body>
+      <div id="mobiili_apunappi">
+          <button class="nappi nappi3" onclick="help_on()">Ohje</button>
+      </div>
+      <div id="apu" onclick="help_off()">
+          <div id="apua">
+              <p>
+              Tässä pelissä tehtävänäsi on sijoittaa Helsingin alueet kartalle. Mukana on myös Espoon ja Vantaan kaupunginosat. Voit valita haluamasi aluejaon sivun oikean laidan napeista. </p>
+              <p>
+              Valitsemalla <b>Pääkaupunkiseutu</b> pääset sijoittamaan kartalle kaikki pääkaupunkiseudun kaupunginosat lukuunottamatta Kauniaista, jonka osalta kaupungin sijoittaminen kartalle riittää. (Kauniaisen kaupunginosilla ei ole nimeä, joten niiden sijoittaminen voisi olla turhan hankalaa.)
+              </p>
+              <p>
+              Peli kertoo oikein menneiden alueiden ja väärien arvauksien määrän. Voit ohittaa arvattavan alueen painamalla <b>Ohita</b>, jolloin kyseinen alue siirtyy kysymysjonon viimeiseksi. Ohituksia voit käyttää niin paljon kuin haluat.
+              </p>
+              <p>&copy; Ilari Rauhala</p>
+          </div>
+      </div>
 
     <div class="oikea">
       <div class="boxi1">
@@ -48,16 +64,26 @@
       <!--div class="boxi1"-->
         <div class="options">
           <h3>Valitse aluejako ja aloita uusi peli</h3>
-          <button class="nappi" onclick="alustaPeli(kaupunginosat, 'kaupunginosan', 'kaupunginosaa')">kaupunginosat</button>
-          <button class="nappi" onclick="alustaPeli(osaalueet, 'osa-alueen', 'osa-aluetta')">osa-alueet</button>
-          <button class="nappi" onclick="alustaPeli(suurpiirit, 'suurpiirin', 'suurpiiriä')">suurpiirit</button>
-          <button class="nappi" onclick="alustaPeli(peruspiirit, 'peruspiirin', 'peruspiiriä')">peruspiirit</button>
-          <button class="nappi nappi2" onclick="alustaPeli(espoo, 'kaupunginosan', 'kaupunginosaa')">Espoo</button>
-          <button class="nappi nappi2" onclick="alustaPeli(vantaa, 'kaupunginosan', 'kaupunginosaa')">Vantaa</button>
-          <button class="nappi nappi2" onclick="alustaPeli(pks, 'kaupunginosan', 'kaupunginosaa')">Pääkaupunkiseutu</button>
+          <input id="nappi_1" type="radio" name="alueet">
+          <label for="nappi_1" class="nappi" onclick="alustaPeli(kaupunginosat, 'kaupunginosan', 'kaupunginosaa')">kaupunginosat</label>
+          <input id="nappi_2" type="radio" name="alueet">
+          <label for="nappi_2" class="nappi" onclick="alustaPeli(osaalueet, 'osa-alueen', 'osa-aluetta')">osa-alueet</label>
+          <input id="nappi_3" type="radio" name="alueet">
+          <label for="nappi_3" class="nappi" onclick="alustaPeli(suurpiirit, 'suurpiirin', 'suurpiiriä')">suurpiirit</label>
+          <input id="nappi_4" type="radio" name="alueet">
+          <label for="nappi_4" class="nappi" onclick="alustaPeli(peruspiirit, 'peruspiirin', 'peruspiiriä')">peruspiirit</label>
+          <input id="nappi_5" type="radio" name="alueet">
+          <label for="nappi_5" class="nappi nappi2" onclick="alustaPeli(espoo, 'kaupunginosan', 'kaupunginosaa')">Espoo</label>
+          <input id="nappi_6" type="radio" name="alueet">
+          <label for="nappi_6" class="nappi nappi2" onclick="alustaPeli(vantaa, 'kaupunginosan', 'kaupunginosaa')">Vantaa</label>
+          <input id="nappi_7" type="radio" name="alueet">
+          <label for="nappi_7" class="nappi nappi2" onclick="alustaPeli(pks, 'kaupunginosan', 'kaupunginosaa')">Pääkaupunkiseutu</label>
           <!-- <h4>Postinumerot</h4>
           <button onclick="alustaPeli(postinumerot)">postinumerot</button> -->
           <!--br><button class="nappi nappi2" onclick="vaihdaTausta()">vaihda taustakartta</button-->
+          <div id="desktop_apunappi">
+              <button class="nappi" onclick="help_on()">Ohje</button>
+          </div>
         </div>
       <!--/div-->
     </div>
@@ -65,6 +91,8 @@
     <div class="vasen">
       <div id="mapid"></div>
     </div>
+
+
 
     <script type="text/javascript">
       //var tileserver = 'https://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png';

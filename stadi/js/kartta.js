@@ -139,3 +139,11 @@ function skip() {
   osa = osat.pop();
   document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
 }
+
+function help_on() {
+    document.getElementById("apu").style.display = "block";
+}
+
+function help_off() {
+  document.getElementById("apu").style.display = "none";
+}

@@ -16,6 +16,20 @@
   border:0;
 }
 
+p {
+    margin-bottom: 10px;
+}
+
+.options input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.options input[type="radio"]:checked + label {
+    background-color: #0000BF;
+    color: #fff;
+}
 
 .skippinappi {
   margin-left: 10px;
@@ -33,10 +47,15 @@
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
+  font-family: sans-serif;
 }
 
 .nappi2 {
   background-color: #00D7A7;
+}
+
+.nappi3 {
+    background-color: #C2A251;
 }
 
 .nappi:hover {
@@ -77,6 +96,37 @@
 
 .options {
   margin: 20% 10px 20px 10px;
+}
+
+#apu {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+    display: none;
+    background-color: rgba(0,0,0,0.7);
+}
+#apua {
+    background-color: #DEDFE1;
+    padding: 5%;
+    margin: 15%;
+    position: absolute;
+    font-size: 16px;
+    text-align: justify;
+    font-family: sans-serif;
+}
+
+#desktop_apunappi {
+    margin-top: 20px;
+}
+
+#mobiili_apunappi {
+    position: fixed;
+    z-index: 1000;
+    bottom: 0px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    display: none;
 }
 
 .oikeat {
@@ -141,13 +191,19 @@ h3 {
     margin-top: 0px;
     font-size: 2.5vw;
   }
-  #mapid { height: 500px; }
+  #mapid {
+      height: calc(100vh - 110px);
+  }
   .nappi {
     margin: 1px 1px;
     padding: 2px 6px;
     font-size: 3.5vw;
   }
+  #apua { margin: 5%;}
+  #mobiili_apunappi {display: block;}
+  #desktop_apunappi {display: none;}
 }
 
-@media only screen and (max-width: 500px) {
-    #mapid { height: calc(100vh - 110px); }
+@media only screen and (max-width: 405px) {
+    #mobiili_apunappi {margin-bottom: 40px; }
+}
