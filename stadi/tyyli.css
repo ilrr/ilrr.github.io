@@ -115,6 +115,9 @@ p {
     text-align: justify;
     font-family: sans-serif;
 }
+.mobiili {
+    display: none;
+}
 
 #desktop_apunappi {
     margin-top: 20px;
@@ -203,6 +206,10 @@ h3 {
   #apua { margin: 5%;}
   #mobiili_apunappi {display: block;}
   #desktop_apunappi {display: none;}
+
+  .mobiili {
+      display: block;
+  }
 }
 
 @media only screen and (max-width: 405px) {

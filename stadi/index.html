@@ -28,6 +28,7 @@
     <script type="text/javascript" src="data/suurpiiri.geojson"></script>
     <script type="text/javascript" src="data/espoo.geojson"></script>
     <script type="text/javascript" src="data/vantaa.geojson"></script>
+    <script type="text/javascript" src="data/espoo_tilasto.geojson"></script>
     <script type="text/javascript" src="data/grani.geojson"></script>
     <script type="text/javascript" src="js/kartta.js"></script>
   </head>
@@ -38,12 +39,15 @@
       <div id="apu" onclick="help_off()">
           <div id="apua">
               <p>
-              Tässä pelissä tehtävänäsi on sijoittaa Helsingin alueet kartalle. Mukana on myös Espoon ja Vantaan kaupunginosat. Voit valita haluamasi aluejaon sivun oikean laidan napeista. </p>
+                  Tässä pelissä tehtävänäsi on sijoittaa Helsingin alueet kartalle. Mukana on myös Espoon ja Vantaan kaupunginosat. Voit valita haluamasi aluejaon sivun oikean laidan napeista. </p>
               <p>
-              Valitsemalla <b>Pääkaupunkiseutu</b> pääset sijoittamaan kartalle kaikki pääkaupunkiseudun kaupunginosat lukuunottamatta Kauniaista, jonka osalta kaupungin sijoittaminen kartalle riittää. (Kauniaisten kaupunginosilla ei ole nimeä, joten niiden sijoittaminen voisi olla turhan hankalaa.)
+                  Valitsemalla <b>Pääkaupunkiseutu</b> pääset sijoittamaan kartalle kaikki pääkaupunkiseudun kaupunginosat lukuunottamatta Kauniaista, jonka osalta kaupungin sijoittaminen kartalle riittää. (Kauniaisten kaupunginosilla ei ole nimeä, joten niiden sijoittaminen voisi olla turhan hankalaa.)
+              </p>
+              <p class="mobiili">
+                  Kaikki pelimuodot eivät näy kerralla mobiilisivulla. Voit vierittää oikeanpuolimmaista kenttää nähdäksesi lisää aluejakoja.
               </p>
               <p>
-              Peli kertoo oikein menneiden alueiden ja väärien arvauksien määrän. Voit ohittaa arvattavan alueen painamalla <b>Ohita</b>, jolloin kyseinen alue siirtyy kysymysjonon viimeiseksi. Ohituksia voit käyttää niin paljon kuin haluat.
+                  Peli kertoo oikein menneiden alueiden ja väärien arvauksien määrän. Voit ohittaa arvattavan alueen painamalla <b>Ohita</b>, jolloin kyseinen alue siirtyy kysymysjonon viimeiseksi. Ohituksia voit käyttää niin paljon kuin haluat.
               </p>
               <p>&copy; Ilari Rauhala</p>
           </div>
@@ -78,6 +82,10 @@
           <label for="nappi_6" class="nappi nappi2" onclick="alustaPeli(vantaa, 'kaupunginosan', 'kaupunginosaa')">Vantaa</label>
           <input id="nappi_7" type="radio" name="alueet">
           <label for="nappi_7" class="nappi nappi2" onclick="alustaPeli(pks, 'kaupunginosan', 'kaupunginosaa')">Pääkaupunkiseutu</label>
+          <input id="nappi_8" type="radio" name="alueet">
+          <label for="nappi_8" class="nappi nappi2" onclick="alustaPeli(espoo_pienalueet, 'pienalueen', 'pienaluetta')">Espoo pienalueet</label>
+          <input id="nappi_9" type="radio" name="alueet">
+          <label for="nappi_9" class="nappi nappi2" onclick="alustaPeli(espoo_suuralueet, 'suuralueen', 'suuraluetta')">Espoo suuralueet</label>
           <!-- <h4>Postinumerot</h4>
           <button onclick="alustaPeli(postinumerot)">postinumerot</button> -->
           <!--br><button class="nappi nappi2" onclick="vaihdaTausta()">vaihda taustakartta</button-->
