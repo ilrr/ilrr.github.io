@@ -8,6 +8,7 @@ var lcontrol;
 var virhe = 0;
 
 function dp(position) {
+    virhe = 0;
     for (l of rata.getLayers()) {
         kartta.removeLayer(l);
     }
