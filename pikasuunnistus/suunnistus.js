@@ -34,7 +34,7 @@ function check(position) {
         fill: false}).addTo(kartta));
     if (document.getElementById("naytaVirhe").checked) {
         rata.addLayer(L.polyline([rasti, [position.coords.latitude, position.coords.longitude]],
-            {color: "#0af", weight:1.5}).addTo(kartta));
+            {color: "#0af"}).addTo(kartta));
     }
 }
 
