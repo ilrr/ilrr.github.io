@@ -32,6 +32,10 @@ function check(position) {
         {color: "#0000bb",
         radius: rastiR,
         fill: false}).addTo(kartta));
+    if (document.getElementById("naytaVirhe").checked) {
+        rata.addLayer(L.polyline([rasti, [position.coords.latitude, position.coords.longitude]],
+            {color: "#0af", weight:1.5}).addTo(kartta));
+    }
 }
 
 function alustaRastit(s, n, minD, maxD) {
