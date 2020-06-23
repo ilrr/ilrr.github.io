@@ -37,6 +37,7 @@ function check(position) {
         rata.addLayer(L.polyline([rasti, [position.coords.latitude, position.coords.longitude]],
             {color: "#0af"}).addTo(kartta));
     }
+    document.getElementById("odota").style.display = "none";
 }
 
 function alustaRastit(s, n, minD, maxD) {

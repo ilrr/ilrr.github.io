@@ -23,9 +23,16 @@
         <script type="text/javascript" src="suunnistus.js"></script>
     </head>
     <body>
+
+        <div class="odota" id="odota">
+            <div class="odota" id="odota2">
+                Leimataan rastia. Odota.
+            </div>
+        </div>
+
         <div class="namiskat">
-            <button class="button" name="button" onclick="navigator.geolocation.getAccurateCurrentPosition(dp, void(0), console.log);">Uusi reitti</button>
-            <button class="button" name="button2" onclick="navigator.geolocation.getAccurateCurrentPosition(check, void(0), void(0));">tsekkaa rasti</button>
+            <button class="button" name="button" onclick="navigator.geolocation.getAccurateCurrentPosition(dp, void(0), console.log);">Uusi rata</button>
+            <button class="button" name="button2" onclick="navigator.geolocation.getAccurateCurrentPosition(check, void(0), void(0));document.getElementById('odota').style.display = 'block';">Leimaa</button>
 
             <div class="virhe" id="virhe">
 
@@ -47,6 +54,8 @@
             <input type="number" id="dMax" value="400" min="1" step="10"> <br>
 
         </div>
+
+
 
         <script type="text/javascript">
             var tileserver = 'http://wmts.mapant.fi/wmts_EPSG3857.php?z={z}&x={x}&y={y}';

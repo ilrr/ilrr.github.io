@@ -16,3 +16,22 @@
 .button {
     font-size: 30px;
 }
+
+#odota {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+    display: none;
+    background-color: rgba(0,0,0,0.7);
+}
+
+#odota2 {
+    background: linear-gradient(to bottom right, white 50%, orange 50%);
+    height: 30vw;
+    width: 30vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
