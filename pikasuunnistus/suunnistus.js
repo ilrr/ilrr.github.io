@@ -18,7 +18,7 @@ function dp(position) {
         {color: "#bb0000",
         radius: rastiR,
         fill: false}).addTo(kartta));
-    alustaRastit([position.coords.latitude, position.coords.longitude], 6, 150, 400);
+    alustaRastit([position.coords.latitude, position.coords.longitude], document.getElementById("rastiN").value, Number(document.getElementById("dMin").value), Number(document.getElementById("dMax").value));
 }
 
 function check(position) {

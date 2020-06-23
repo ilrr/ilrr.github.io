@@ -23,10 +23,10 @@
         <script type="text/javascript" src="suunnistus.js"></script>
     </head>
     <body>
-        <div class="options">
-            <button class="button" name="button" onclick="navigator.geolocation.getCurrentPosition(dp);">Uusi reitti</button>
-            <button class="button" name="button2" onclick="navigator.geolocation.getCurrentPosition(check);">tsekkaa rasti</button>
-            <input type="checkbox" id="naytaVirhe">
+        <div class="namiskat">
+            <button class="button" name="button" onclick="navigator.geolocation.getCurrentPosition(dp, void(0), {maximumAge: 0, enableHighAccuracy: true});">Uusi reitti</button>
+            <button class="button" name="button2" onclick="navigator.geolocation.getCurrentPosition(check, void(0), {maximumAge: 0, enableHighAccuracy: true});">tsekkaa rasti</button>
+
             <div class="virhe" id="virhe">
 
             </div>
@@ -34,6 +34,18 @@
 
         <div class="map">
             <div id="mapid"></div>
+        </div>
+
+        <div class="options">
+            Näytä virhe kartalla
+            <input type="checkbox" id="naytaVirhe"> <br>
+            Rastien määrä
+            <input type="number" id="rastiN" value="5" min="1"> <br>
+            Rastien minimietäisyys
+            <input type="number" id="dMin" value="150" min="1" step="10"> <br>
+            Rastien maksimietäisyys
+            <input type="number" id="dMax" value="400" min="1" step="10"> <br>
+
         </div>
 
         <script type="text/javascript">
