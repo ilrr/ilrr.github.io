@@ -24,8 +24,8 @@
     </head>
     <body>
         <div class="namiskat">
-            <button class="button" name="button" onclick="navigator.geolocation.getCurrentPosition(dp, void(0), {maximumAge: 0, enableHighAccuracy: true});">Uusi reitti</button>
-            <button class="button" name="button2" onclick="navigator.geolocation.getCurrentPosition(check, void(0), {maximumAge: 0, enableHighAccuracy: true});">tsekkaa rasti</button>
+            <button class="button" name="button" onclick="navigator.geolocation.getAccurateCurrentPosition(dp, void(0), console.log);">Uusi reitti</button>
+            <button class="button" name="button2" onclick="navigator.geolocation.getAccurateCurrentPosition(check, void(0), void(0));">tsekkaa rasti</button>
 
             <div class="virhe" id="virhe">
 
