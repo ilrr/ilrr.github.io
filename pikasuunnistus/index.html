@@ -52,7 +52,12 @@
             <input type="number" id="dMin" value="150" min="1" step="10"> <br>
             Rastien maksimietäisyys
             <input type="number" id="dMax" value="400" min="1" step="10"> <br>
-
+            GPS:n tarkkuus
+            <input type="range" min="10" max="30" value="20" class="slider" id="gpsTarkkuus">
+            <div class="sliderValue" id="gpsT">20</div><br>
+            Leimaamisen toleranssi
+            <input type="range" min="0" max="50" value="20" class="slider" id="toleranssi">
+            <div class="sliderValue" id="leimaT">20</div>
         </div>
 
 
@@ -65,6 +70,12 @@
                 minZoom: 7,
                 detectRetina: true,
                 attribution: 'MapAnt'}).addTo(kartta);
+                document.getElementById("gpsTarkkuus").oninput = function() {
+                    document.getElementById("gpsT").innerHTML = this.value;
+                }
+                document.getElementById("toleranssi").oninput = function() {
+                    document.getElementById("leimaT").innerHTML = this.value;
+                }
         </script>
 
     </body>
