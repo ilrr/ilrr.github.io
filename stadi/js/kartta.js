@@ -1,8 +1,8 @@
-var osat = [];
+var divsToGuess = [];
 var fresh = true;
-var osatt;
+var divisionLayer;
 var posti = false;
-var osa;
+var div;
 
 var espoo_pienalueet = {"features": []};
 var espoo_suuralueet = {"features": []};
@@ -29,19 +29,24 @@ var pks = {"features": espoo.features.concat(kaupunginosat.features).concat(gran
 
 var tileI = 0;
 var tiles = [
-  L.tileLayer('https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png', {attribution: 'Taustakartta &copy; <a href="https://www.openstreetmap.org/">OpenStreetMapin</a> tekijät | Aluerajat &copy; Helsingin kaupunki'}),
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+    	attribution: 'Taustakartta: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMapin</a> tekijät &copy; <a href="https://carto.com/attributions">CARTO</a> | Aluerajat &copy; Helsingin kaupunki',
+    	subdomains: 'abcd',
+    	maxZoom: 20
+    }),
+//  L.tileLayer('https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png', {attribution: 'Taustakartta &copy; <a href="https://www.openstreetmap.org/">OpenStreetMapin</a> tekijät | Aluerajat &copy; Helsingin kaupunki'}),
   L.tileLayer('http://a.tile.stamen.com/toner-background/{z}/{x}/{y}{r}.png', {attribution: 'TÄHÄN JOTAIN | Aluerajat &copy; Helsingin kaupunki'}),
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community | Aluerajat &copy; Helsingin kaupunki'}),
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
 	attribution: 'Taustakartta &copy; <a href="https://www.openstreetmap.org/">OpenStreetMapin</a> tekijät &copy; <a href="https://carto.com/attributions">CARTO</a> | Aluerajat &copy; Helsingin kaupunki'})
 ]
 
-var hesa;
+var gameMap;
 
 function vaihdaTausta() {
-  hesa.removeLayer(tiles[tileI]);
+  gameMap.removeLayer(tiles[tileI]);
   tileI = (tileI + 1) % tiles.length;
-  hesa.addLayer(tiles[tileI]);
+  gameMap.addLayer(tiles[tileI]);
 }
 
 function shuffle(array) {
@@ -62,19 +67,19 @@ function shuffle(array) {
   return array;
 }
 
-function nollaa() {
+function resetPoints() {
   oikeat = 0;
   vaarat = 0;
   document.getElementById('oikeat').innerHTML = '';
   document.getElementById('arvattava').innerHTML = '';
   document.getElementById('vaarat').innerHTML = '';
   if (! fresh){
-    hesa.removeLayer(osatt);
+    gameMap.removeLayer(divisionLayer);
   }
 }
 
-function nollaaVaarat() {
-  osatt.eachLayer(function (ll) {
+function resetWrogGuesses() {
+  divisionLayer.eachLayer(function (ll) {
     if (vaarin.find(e => e === ll.feature.properties.id)){
       ll.setStyle(neutraali);
     }
@@ -102,40 +107,40 @@ var neutraali = {
   "weight": 3
 }
 
-function alustaPeli(helosaalueet, gen, part) {
-  nollaa();
+function newGame(division, gen, part) {
+  resetPoints();
   document.getElementById('skippinappi').innerHTML = '<button class="nappi" onclick="skip()">ohita</button>';
   fresh = false;
-  osat = [];
-  for (osa of helosaalueet.features) {
-    osat.push({id:osa.properties.id, nimi_fi:osa.properties.nimi_fi, nimi_se:osa.properties.nimi_se});
+  divsToGuess = [];
+  for (d of division.features) {
+    divsToGuess.push({id: d.properties.id, nimi_fi: d.properties.nimi_fi, nimi_se: d.properties.nimi_se});
   }
-  shuffle(osat);
-  osatt = L.geoJson(helosaalueet, {
+  shuffle(divsToGuess);
+  divisionLayer = L.geoJson(division, {
     style: neutraali
-  }).addTo(hesa);
-  osatt.eachLayer(function (layer) {
+  }).addTo(gameMap);
+  divisionLayer.eachLayer(function (layer) {
             layer.on('click', function(ev) {
-              if (layer.feature.properties.id == osa.id) {
-                layer.bindTooltip(osa.nimi_fi+"<br>"+osa.nimi_se,{permanent: false, direction:"center", opacity:0.5}).openTooltip();
+              if (layer.feature.properties.id == div.id) {
+                layer.bindTooltip(div.nimi_fi+"<br>"+div.nimi_se,{permanent: false, direction:"center", opacity:0.5}).openTooltip();
                 oikeat += 1;
                 if (oikeat == 1){
                   document.getElementById('oikeat').innerHTML = 'Olet tiennyt yhden '+ gen +'!';
                 } else{
                   document.getElementById('oikeat').innerHTML = 'Olet tiennyt ' + oikeat + ' ' + part + '!';
                 }
-                if (osa = osat.pop()){
-                  document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
+                if (div = divsToGuess.pop()){
+                  document.getElementById('arvattava').innerHTML = div.nimi_fi + '<br>' + div.nimi_se;
                 } else {
                   document.getElementById('arvattava').innerHTML = 'Voitit pelin!';
                 }
                 layer.bringToFront()
 
                 layer.setStyle(oikea);
-                nollaaVaarat();
+                resetWrogGuesses();
                 this.redraw();
               }
-              else if (osat.find(e => e.id === layer.feature.properties.id) && !vaarin.includes(layer.feature.properties.id)) {
+              else if (divsToGuess.find(e => e.id === layer.feature.properties.id) && !vaarin.includes(layer.feature.properties.id)) {
                 layer.setStyle(vaara);
                 layer.bringToFront()
                 vaarin.push(layer.feature.properties.id);
@@ -146,19 +151,19 @@ function alustaPeli(helosaalueet, gen, part) {
             ;});
 
         });
-  osa = osat.pop();
+  div = divsToGuess.pop();
 //  if (posti) {
-//    document.getElementById('arvattava').innerHTML = osa.tunnus;
+//    document.getElementById('arvattava').innerHTML = div.tunnus;
 //  } else {
-    document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
+    document.getElementById('arvattava').innerHTML = div.nimi_fi + '<br>' + div.nimi_se;
 //  }
 }
 
 function skip() {
-  nollaaVaarat();
-  osat.unshift(osa);
-  osa = osat.pop();
-  document.getElementById('arvattava').innerHTML = osa.nimi_fi + '<br>' + osa.nimi_se;
+  resetWrogGuesses();
+  divsToGuess.unshift(div);
+  div = divsToGuess.pop();
+  document.getElementById('arvattava').innerHTML = div.nimi_fi + '<br>' + div.nimi_se;
 }
 
 function help_on() {

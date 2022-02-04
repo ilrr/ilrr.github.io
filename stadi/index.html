@@ -70,25 +70,25 @@
         <div class="options">
           <h3>Valitse aluejako ja aloita uusi peli</h3>
           <input id="nappi_1" type="radio" name="alueet">
-          <label for="nappi_1" class="nappi" onclick="alustaPeli(kaupunginosat, 'kaupunginosan', 'kaupunginosaa')">kaupunginosat</label>
+          <label for="nappi_1" class="nappi" onclick="newGame(kaupunginosat, 'kaupunginosan', 'kaupunginosaa')">kaupunginosat</label>
           <input id="nappi_2" type="radio" name="alueet">
-          <label for="nappi_2" class="nappi" onclick="alustaPeli(osaalueet, 'osa-alueen', 'osa-aluetta')">osa-alueet</label>
+          <label for="nappi_2" class="nappi" onclick="newGame(osaalueet, 'osa-alueen', 'osa-aluetta')">osa-alueet</label>
           <input id="nappi_3" type="radio" name="alueet">
-          <label for="nappi_3" class="nappi" onclick="alustaPeli(suurpiirit, 'suurpiirin', 'suurpiiriä')">suurpiirit</label>
+          <label for="nappi_3" class="nappi" onclick="newGame(suurpiirit, 'suurpiirin', 'suurpiiriä')">suurpiirit</label>
           <input id="nappi_4" type="radio" name="alueet">
-          <label for="nappi_4" class="nappi" onclick="alustaPeli(peruspiirit, 'peruspiirin', 'peruspiiriä')">peruspiirit</label>
+          <label for="nappi_4" class="nappi" onclick="newGame(peruspiirit, 'peruspiirin', 'peruspiiriä')">peruspiirit</label>
           <input id="nappi_5" type="radio" name="alueet">
-          <label for="nappi_5" class="nappi nappi2" onclick="alustaPeli(espoo, 'kaupunginosan', 'kaupunginosaa')">Espoo</label>
+          <label for="nappi_5" class="nappi nappi2" onclick="newGame(espoo, 'kaupunginosan', 'kaupunginosaa')">Espoo</label>
           <input id="nappi_6" type="radio" name="alueet">
-          <label for="nappi_6" class="nappi nappi2" onclick="alustaPeli(vantaa, 'kaupunginosan', 'kaupunginosaa')">Vantaa</label>
+          <label for="nappi_6" class="nappi nappi2" onclick="newGame(vantaa, 'kaupunginosan', 'kaupunginosaa')">Vantaa</label>
           <input id="nappi_7" type="radio" name="alueet">
-          <label for="nappi_7" class="nappi nappi2" onclick="alustaPeli(pks, 'kaupunginosan', 'kaupunginosaa')">Pääkaupunkiseutu</label>
+          <label for="nappi_7" class="nappi nappi2" onclick="newGame(pks, 'kaupunginosan', 'kaupunginosaa')">Pääkaupunkiseutu</label>
           <input id="nappi_8" type="radio" name="alueet">
-          <label for="nappi_8" class="nappi nappi2" onclick="alustaPeli(espoo_pienalueet, 'pienalueen', 'pienaluetta')">Espoo pienalueet</label>
+          <label for="nappi_8" class="nappi nappi2" onclick="newGame(espoo_pienalueet, 'pienalueen', 'pienaluetta')">Espoo pienalueet</label>
           <input id="nappi_9" type="radio" name="alueet">
-          <label for="nappi_9" class="nappi nappi2" onclick="alustaPeli(espoo_suuralueet, 'suuralueen', 'suuraluetta')">Espoo suuralueet</label>
+          <label for="nappi_9" class="nappi nappi2" onclick="newGame(espoo_suuralueet, 'suuralueen', 'suuraluetta')">Espoo suuralueet</label>
           <!-- <h4>Postinumerot</h4>
-          <button onclick="alustaPeli(postinumerot)">postinumerot</button> -->
+          <button onclick="newGame(postinumerot)">postinumerot</button> -->
           <!--br><button class="nappi nappi2" onclick="vaihdaTausta()">vaihda taustakartta</button-->
           <div id="desktop_apunappi">
               <button class="nappi" onclick="help_on()">Ohje</button>
@@ -111,8 +111,8 @@
       var vaarin = [];
       var vaarat = 0;
       var oikeat = 0;
-      hesa = L.map('mapid').setView([60.155577, 24.951100], 10);
-      tiles[0].addTo(hesa);
+      gameMap = L.map('mapid').setView([60.155577, 24.951100], 10);
+      tiles[0].addTo(gameMap);
 
     </script>
 
